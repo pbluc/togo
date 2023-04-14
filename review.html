@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="description" content="This is food truck finder and reviews web application.">
+        <meta name="authors" content="Chidinma M, Patricia L, Camille C">
+
+        <title>ToGo</title>
+
+        <!-- api gateway generated sdk -->
+
+    </head>
+    <body>
+        <h2>New Review</h2>
+        <form>
+            <label for="rating">Rating </label><br>
+            <input type="number" id="ratingInput" name="rating" min="1" max="5"><br>
+            <label for="description">Review Description</label><br>
+            <textarea id="descriptionInput" name="description" cols="50" rows="10"></textarea>
+            <div></div>
+            <button type="button" id="submitReviewBtn">Submit</button>
+            <button type="button" id="closeBtn">Close</button>
+        </form>
+        <script src="js/review.js"></script>
+    </body>
+</html>
