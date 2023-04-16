@@ -12,10 +12,6 @@ function logout() {
     location.href = "index.html";
 }
 
-$(document).ready(function() {
-    getReviews();
-});
-
 function getReviews() {
     params = {
         "useremail": "patricia.b.luc@gmail.com",
