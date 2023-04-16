@@ -2,6 +2,8 @@ var logoutBtn = document.getElementById("logoutBtn");
 var writeReviewBtn = document.getElementById("writeReviewBtn");
 var listOfReviews = document.getElementById("listOfReviews");
 
+var apigClient = apigClientFactory.newClient();
+
 logoutBtn.onclick = function() {logout()};
 writeReviewBtn.onclick = function() {
     location.href = "review.html";
@@ -22,15 +24,21 @@ function getReviews() {
     .then((response) => {
         console.log(response);
 
-        response.forEach(review => {
+        reviews = response['data']['reviews'];
+        console.log(reviews);
+
+        reviews.forEach(review => {
             let business = review['business-email'];
             let rating = review['rating'];
             let description = review['review'];
             let reply = review['reply'];
+            if (reply == null) {
+                reply = "";
+            }
 
-            var templateReviewCard = `<div class="card"><div class="container"><h4><b>${business}</b></h4><p>${rating}</p><p>${description}</p><p>${reply}</p></div></div>`;
+            var templateReviewCard = '<div class="card"><div class="container"><h4><b>' + business + '</b></h4><p>' + rating + '</p><p>' + description + '</p><p>' + reply + '</p></div></div>';
 
-            listOfReviews.appendChild(templateReviewCard);
+            listOfReviews.insertAdjacentHTML('beforeend', templateReviewCard);
         });
     }).catch((error) => {
         console.log('an error occurred', error);
